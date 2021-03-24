@@ -2,19 +2,25 @@
 
 namespace System\Database\ORM;
 
-use System\Database\Trats\HasCRUD;
-use System\Database\Trats\HasAttributes;
-use System\Database\Trats\HasMethodCaller;
-use System\Database\Trats\HasQueryBuilder;
-use System\Database\Trats\HasRelation;
-use System\Database\Trats\HasSoftDelete;
+use System\Database\Traits\HasCRUD;
+use System\Database\Traits\HasAttributes;
+use System\Database\Traits\HasMethodCaller;
+use System\Database\Traits\HasQueryBuilder;
+use System\Database\Traits\HasRelation;
 
-abstract class Model
-{
-    use HasCRUD, HasAttributes, HasMethodCaller, HasQueryBuilder, HasRelation, HasSoftDelete;
+abstract class Model {
+
+    use HasCRUD,HasAttributes,HasMethodCaller,HasQueryBuilder,HasRelation;
+
+    protected $table;
+    protected $fillable = [];
+    protected $hidden = [];
+    protected $casts = [];
+    protected $primaryKey = 'id';
+    protected $createdAt = 'created_at';
+    protected $updatedAt = 'updated_at';
+    protected $deletedAt = null;
+    protected $collection = [];
 
 
 }
-
-
-
